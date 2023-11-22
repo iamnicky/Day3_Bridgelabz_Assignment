@@ -35,14 +35,16 @@ public class SinglePlayer {
         int finalPosition = 100;
         System.out.println("Welcome to the Game");
 
-        while (currentPosition < finalPosition) {
+        while (currentPosition <= finalPosition) {
             int dieRolled = Die.roll();
             //player movement
-            currentPosition += dieRolled;
+            if (finalPosition - currentPosition >= dieRolled) {
+                currentPosition += dieRolled;
 
-            currentPosition = checkSnakeAndLadder(currentPosition);
-            //after rolling dic what we got and the current position
-            System.out.println("Die Rolled we got: " + dieRolled + "Current Position: " + currentPosition);
+                currentPosition = checkSnakeAndLadder(currentPosition);
+                //after rolling die what we got and the current position
+                System.out.println("Die Rolled we got: " + dieRolled + " Current Position: " + currentPosition);
+            }
 
         }
         System.out.println("Congratulations! You reached the final square.");
